@@ -28,7 +28,11 @@ app.get('/', function(request, response) {
   response.render('game');
 });
 
-console.log(words);
+var word = words[Math.floor(Math.random() * 235886)];
+console.log(word);
+
+
+
 
 
 app.listen(3000, function() {
