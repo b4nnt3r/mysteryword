@@ -3,8 +3,11 @@ const session = require('express-session');
 const mustacheExpress = require('mustache-express');
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
+const fs = require('fs');
+
 
 const app = express();
+const words = fs.readFileSync("/usr/share/dict/words", "utf-8").toLowerCase().split("\n");
 
 app.engine('mustache', mustacheExpress());
 app.set('views', './views');
@@ -21,8 +24,11 @@ app.use(session({
 app.use(expressValidator())
 app.use(express.static('public'));
 
+app.get('/', function(request, response) {
+  response.render('game');
+});
 
-
+console.log(words);
 
 
 app.listen(3000, function() {
