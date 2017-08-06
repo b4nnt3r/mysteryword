@@ -39,7 +39,7 @@ app.get('/', function(req, res) {
     req.session.newGame = false
   }
 
-  console.log(req.session)
+  console.log("session details:", req.session)
 
   res.render('index', {
     dashes: req.session.dashes,
